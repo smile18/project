@@ -1,0 +1,2185 @@
+pair@eric-mittlers-imac: ~/workspace/kessling (master)$ cap sandbox deploy
+  * == Currently executing `sandbox'
+    triggering start callbacks for `deploy'
+  * == Currently executing `multistage:ensure'
+  * == Currently executing `deploy'
+  * == Currently executing `deploy:update'
+ ** transaction: start
+  * == Currently executing `deploy:update_code'
+    triggering before callbacks for `deploy:update_code'
+  * == Currently executing `deploy:fetch_tags'
+    executing locally: "git fetch -t"
+remote: Counting objects: 1, done.
+remote: Total 1 (delta 0), reused 1 (delta 0)
+Unpacking objects: 100% (1/1), done.
+From github.com:emi/kessling
+ * [new tag]         ci/20130409214322 -> ci/20130409214322
+ * [new tag]         integration/20130409214611 -> integration/20130409214611
+ * [new tag]         jenkins-kessling-367 -> jenkins-kessling-367
+ ** 
+ ** Fetched tags for autotagger
+  * == Currently executing `auto_tagger:set_branch'
+cd /Users/pair/work/kessling && git show-ref
+cd /Users/pair/work/kessling && git show-ref
+ ** AUTO TAGGER: setting branch to 199a104d3e528df343a40b8e7557074798aa75b5
+    updating the cached checkout on all servers
+  * executing "if [ -d /emi/kessling/shared/cached-copy ]; then cd /emi/kessling/shared/cached-copy && git fetch -q origin && git reset -q --hard 199a104d3e528df343a40b8e7557074798aa75b5 && git submodule -q init && for mod in `git submodule status | awk '{ print $2 }'`; do git config -f .git/config submodule.${mod}.url `git config -f .gitmodules --get submodule.${mod}.url` && echo Synced $mod; done && git submodule -q sync && git submodule -q update && git clean -q -d -x -f; else git clone -q git@github.com:emi/kessling.git /emi/kessling/shared/cached-copy && cd /emi/kessling/shared/cached-copy && git checkout -q -b deploy 199a104d3e528df343a40b8e7557074798aa75b5 && git submodule -q init && git submodule -q sync && git submodule -q update; fi"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+ ** [aa39.dev.emiplatform.com :: out] Synced slice_sources/platform_shared
+ ** [aa39.dev.emiplatform.com :: out] Synced submodules/citizen_client
+ ** [aa39.dev.emiplatform.com :: out] Synced submodules/client_base
+ ** [aa39.dev.emiplatform.com :: out] Synced submodules/dm-entity
+ ** [aa39.dev.emiplatform.com :: out] Synced submodules/keymaster
+ ** [aa39.dev.emiplatform.com :: out] Synced submodules/platform
+ ** [aa39.dev.emiplatform.com :: err] From github.com:emi/citizen_client
+ ** [aa39.dev.emiplatform.com :: err]    7417c3b..47af546  master     -> origin/master
+    command finished
+    copying the cached version to /emi/kessling/releases/20130409214825
+  * executing "cp -RPp /emi/kessling/shared/cached-copy /emi/kessling/releases/20130409214825 && (echo 199a104d3e528df343a40b8e7557074798aa75b5 > /emi/kessling/releases/20130409214825/REVISION)"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * == Currently executing `deploy:finalize_update'
+  * executing "rm -rf /emi/kessling/releases/20130409214825/log /emi/kessling/releases/20130409214825/public/system /emi/kessling/releases/20130409214825/tmp/pids &&\\\n      mkdir -p /emi/kessling/releases/20130409214825/public &&\\\n      mkdir -p /emi/kessling/releases/20130409214825/tmp &&\\\n      ln -s /emi/kessling/shared/log /emi/kessling/releases/20130409214825/log &&\\\n      ln -s /emi/kessling/shared/system /emi/kessling/releases/20130409214825/public/system &&\\\n      ln -s /emi/kessling/shared/pids /emi/kessling/releases/20130409214825/tmp/pids"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "find /emi/kessling/releases/20130409214825/public/images /emi/kessling/releases/20130409214825/public/stylesheets /emi/kessling/releases/20130409214825/public/javascripts -exec touch -t 201304092148.26 {} ';'; true"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+    triggering after callbacks for `deploy:update_code'
+  * == Currently executing `bundle:install'
+    triggering before callbacks for `bundle:install'
+  * == Currently executing `bundler:install'
+  * executing "gem install bundler -v1.0.11"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+ ** [out :: aa39.dev.emiplatform.com] Successfully installed bundler-1.0.11
+ ** [out :: aa39.dev.emiplatform.com] 1 gem installed
+    command finished
+  * executing "ls -x /emi/kessling/releases"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "cd /emi/kessling/releases/20130409214825 && cd /emi/kessling/releases/20130409214825; bundle install --gemfile /emi/kessling/releases/20130409214825/Gemfile --path /emi/kessling/shared/bundle --deployment --without development test"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+ ** [out :: aa39.dev.emiplatform.com] Using rake (0.8.7)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using peachy (0.4.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using will_paginate (3.0.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using 7digital (0.0.7)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using ZenTest (4.4.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using RubyInline (3.8.6)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using sexp_processor (3.0.5)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using ParseTree (3.0.6)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using abstract (1.0.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using addressable (2.2.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using highline (1.6.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using net-ssh (2.1.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using net-scp (1.0.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using net-sftp (2.0.5)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using net-ssh-gateway (1.0.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using capistrano (2.5.19)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using auto_tagger (0.2.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using bcrypt-ruby (2.1.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using crack (0.1.8)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using httparty (0.6.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using bitly (0.5.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using blankslate (2.1.2.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using builder (3.0.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using daemons (1.1.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using data_objects (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using diff-lcs (1.1.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using extlib (0.9.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-core (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-aggregates (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-migrations (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-observer (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-pager (1.1.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using fastercsv (1.5.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using json_pure (1.2.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-serializer (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using randexp (0.1.5)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-sweatshop (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using stringex (1.1.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using uuidtools (2.1.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-types (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using dm-validations (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using do_mysql (0.10.2)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using emipair-delayed_job (2.0.3.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using locale (2.0.8)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using gettext (2.0.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using erubis (2.6.6)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using mime-types (1.16)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using rack (1.2.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using rspec (1.3.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using thor (0.9.9)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-core (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using polyglot (0.3.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using treetop (1.2.6)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using emipair-merb_global (0.0.12)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using googlecharts (1.6.8)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using hashie (0.4.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using httpclient (2.1.6.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using itunes-search-api (0.1.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using selenium-client (1.2.18)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using selenium-rc (2.2.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using jasmine (0.10.3.5)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using mailfactory (1.4.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using ruby_parser (2.0.5)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using ruby2ruby (1.2.5)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-action-args (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-assets (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-exceptions (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using templater (1.0.0)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-gen (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-helpers (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-mailer (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-pagination (0.0.1)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-param-protection (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb-slices (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using merb_datamapper (1.0.15)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using newrelic_rpm (2.13.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using nokogiri (1.4.4)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using oauth (0.4.7)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using obitum-remixr (0.1.3)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using tzinfo (0.3.35)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Using platform_shared (0.0.1) from source at slice_sources/platform_shared
+ ** [out :: aa39.dev.emiplatform.com] Using rchardet (1.3)
+ ** [out :: aa39.dev.emiplatform.com] Using rest-client (0.9.2)
+ ** [out :: aa39.dev.emiplatform.com] Using right_http_connection (1.2.4)
+ ** [out :: aa39.dev.emiplatform.com] Using right_aws (1.10.0)
+ ** [out :: aa39.dev.emiplatform.com] Using ruby-hmac (0.4.0)
+ ** [out :: aa39.dev.emiplatform.com] Using sanitize (1.2.1)
+ ** [out :: aa39.dev.emiplatform.com] Using soap4r (1.5.8)
+ ** [out :: aa39.dev.emiplatform.com] Using xml-simple (1.0.12)
+ ** [out :: aa39.dev.emiplatform.com] Using zanox (0.2.2)
+ ** [out :: aa39.dev.emiplatform.com] Using bundler (1.0.11)
+ ** [out :: aa39.dev.emiplatform.com] Your bundle is complete! It was installed into /emi/kessling/shared/bundle
+    command finished
+    triggering after callbacks for `bundle:install'
+  * == Currently executing `deploy:update_shared_slice'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t slices:platform_shared:install\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke slices:platform_shared:install (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke slices:platform_shared:preflight (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute slices:platform_shared:preflight
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke slices:platform_shared:setup_directories (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute slices:platform_shared:setup_directories
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Creating directories for host application
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - creating directory :helper 20130409214825/slices/platform_shared/app/helpers
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /mnt/emi/kessling/releases/20130409214825/slices/platform_shared/app/helpers
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - creating directory :javascript 20130409214825/public/slices/platform_shared/javascripts
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/javascripts
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - creating directory :image 20130409214825/public/slices/platform_shared/images
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - creating directory :view 20130409214825/slices/platform_shared/app/views
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /mnt/emi/kessling/releases/20130409214825/slices/platform_shared/app/views
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke slices:platform_shared:copy_assets (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute slices:platform_shared:copy_assets
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Copying assets for PlatformShared - resolves any collisions
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/generated/Readme
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/jquery.autocomplete.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/sessions.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/reset.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/table.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/awesomecomplete.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/thickbox.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/form.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/application.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/unsupported_browser.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/jquery.datepicker.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/filter_box.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/stylesheets/shared/tooltime.css
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/date.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/console_log_protection.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/date_picker.date.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/DD_belatedPNG_0.0.8a.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/underscore.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/flash_detection/AC_OETags.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.textTruncate-2009-12-02.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-1.3.2.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.datepicker.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.cookie.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.labelify.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.srender.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.tinysort.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.string.1.0.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.simulate.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.awesomecomplete.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.Jcrop.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.form.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.ajaxmanager.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.history.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.easing.1.3.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.timers-1.1.2.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.livequery.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.enumerable.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jscroll_pane/jquery.mousewheel.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jscroll_pane/jquery.em.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jscroll_pane/jScrollPane.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery.autocomplete.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.selectable.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.scale.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.explode.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.resizable.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.highlight.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.sortable.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.core.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.blind.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-it.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-es.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-tr.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-he.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ar.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-de.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-id.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-pl.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-hy.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-fi.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-sr.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ms.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-fa.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-da.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-hr.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-sr-SR.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-lv.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-pt-BR.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-nl.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-lt.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ko.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-sq.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-zh-TW.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-el.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-hu.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ja.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ru.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-cs.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-fr.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-is.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-eo.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-sk.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-th.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ro.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-zh-CN.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-ca.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-no.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/jquery-ui-i18n.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-sv.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-uk.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-bg.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/i18n/ui.datepicker-sl.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.drop.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.slide.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/jquery-ui-1.7.2.custom.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.accordion.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.datepicker.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.droppable.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.dialog.js
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.transfer.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.core.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.shake.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.tabs.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.fold.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.slider.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.progressbar.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.bounce.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/ui.draggable.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.clip.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/jquery/jquery-ui/ui/effects.pulsate.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/asperaweb.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/json.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/sound_manager2/script/soundmanager2-nodebug-jsmin.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/sound_manager2/script/soundmanager2.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/sound_manager2/swf/soundmanager2.swf
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/third_party/sound_manager2/swf/soundmanager2_flash9.swf
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/generated/Readme
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/underscore_extensions.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/thickbox.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/modal_dialog.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/analytics.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/column_sort.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/filter_box.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/tooltime.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/bind_method.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/preloadCssImages.jQuery_v5.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/validated_ajax_form.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/default_text.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/javascripts/shared/application.js
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/thickbox/loadingAnimation.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/thickbox/macFFBgHack.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/blue.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/blue_click.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/edit.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/black_hover.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/edit_hover.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/grey.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/edit_on.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/black.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/grey_button.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/buttons/blue_hover.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/logos/emi_music_platform_hover.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/logos/emi_music_platform.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/body_glow_right.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/breadcrumb_glow.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_grey_left.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/dotted-border.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/filter_text_middle.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_grey_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/application_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/filter_text_left.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/dotted-border-grey.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/body_glow_left.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/breadcrumb_grey.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_pointer_grey_right.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/sort_hover_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/divider.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_pointer_left.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/breadcrumb_white.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/header_bg_nonprod.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_pointer_grey_left.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_pointer_grey_top.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_left.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_pointer_top.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/tooltime_pointer_right.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/filter_text_right.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/column_header_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/breadcrumb_shadow.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/backgrounds/header_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/IE_logo.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/sort_arrow_down.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/sort_arrow_up.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/help.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/firefox_logo.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/simple_delete.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/filter.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/icons/information.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/date_picker/calendar.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/lightbox/modal_titlebar_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/lightbox/modal_bg_black.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/lightbox/close_modal.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/lightbox/modal_bg.png
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/white_indicator_black.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/green_indicator_beige.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/black_indicator.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/black_indicator_grey.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/grey_indicator_large.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/black_indicator_large.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/green_indicator.gif
+ ** [out :: aa39.dev.emiplatform.com] - copied public/slices/platform_shared/images/shared/spinners/blue_indicator.gif
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke slices:platform_shared:migrate (first_time)
+ ** [out :: aa39.dev.emiplatform.com] ** Execute slices:platform_shared:migrate
+ ** [out :: aa39.dev.emiplatform.com] ** Execute slices:platform_shared:install
+    command finished
+  * == Currently executing `deploy:symlink'
+    triggering before callbacks for `deploy:symlink'
+  * == Currently executing `deploy:web:disable'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t maintenance:install[sandbox,dmmtool] WEB_HOSTS=router.dev.emiplatform.com\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke maintenance:install (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke environment (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute environment
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute maintenance:install
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/logos/emi_music_platform.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/logos/emi_music_platform_hover.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/spinners/grey_indicator_large.gif /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/application_bg.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/header_bg.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/header_bg_nonprod.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/blue.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/blue.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/blue_hover.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/blue.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/grey.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/grey.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/blue_hover.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/grey.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/grey_button.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/grey_button.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/buttons/grey_button.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/breadcrumb_shadow.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/breadcrumb_glow.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/breadcrumb_white.png /tmp/sandbox-dmmtool20130409-19690-139h360
+*** [err :: aa39.dev.emiplatform.com] cp /mnt/emi/kessling/releases/20130409214825/public/slices/platform_shared/images/shared/backgrounds/breadcrumb_grey.png /tmp/sandbox-dmmtool20130409-19690-139h360
+ ** [out :: aa39.dev.emiplatform.com] Installing maintenance page on web host [router.dev.emiplatform.com]
+ ** [out :: aa39.dev.emiplatform.com] application.css
+ ** [out :: aa39.dev.emiplatform.com] application_bg.png
+ ** [out :: aa39.dev.emiplatform.com] blue.png
+ ** [out :: aa39.dev.emiplatform.com] blue_hover.png
+ ** [out :: aa39.dev.emiplatform.com] breadcrumb_glow.png
+ ** [out :: aa39.dev.emiplatform.com] breadcrumb_grey.png
+ ** [out :: aa39.dev.emiplatform.com] breadcrumb_shadow.png
+ ** [out :: aa39.dev.emiplatform.com] breadcrumb_white.png
+ ** [out :: aa39.dev.emiplatform.com] emi_music_platform.png
+ ** [out :: aa39.dev.emiplatform.com] emi_music_platform_hover.png
+ ** [out :: aa39.dev.emiplatform.com] grey.png
+ ** [out :: aa39.dev.emiplatform.com] grey_button.png
+ ** [out :: aa39.dev.emiplatform.com] grey_indicator_large.gif
+ ** [out :: aa39.dev.emiplatform.com] header_bg.png
+ ** [out :: aa39.dev.emiplatform.com] header_bg_nonprod.png
+ ** [out :: aa39.dev.emiplatform.com] maintenance.html
+ ** [out :: aa39.dev.emiplatform.com] reset.css
+ ** [out :: aa39.dev.emiplatform.com] Maintenance page installation complete on [router.dev.emiplatform.com]
+    command finished
+*** EMI Info: N.B.: Maintenance mode can be bypassed by setting a cookie: BYPASS_MAINTENANCE=true
+  * == Currently executing `uploads:symlink'
+  * executing "mkdir -p /emi/kessling/shared/uploads"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "chown nobody:nogroup /emi/kessling/shared/uploads"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "ln -nfs /emi/kessling/shared/uploads /emi/kessling/releases/20130409214825/public/uploads"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * == Currently executing `vendor:images'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t vendor:images:recover\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke vendor:images:recover (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute vendor:images:recover
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_physical_at.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_digital_at.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_physical_ca.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_physical_de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_digital_de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_physical_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_digital_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazonka_physical_pl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazonka_digital_pl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/animatomusic_physical_bg.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bengans_physical_se.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bestbuy_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bestbuy_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bestmusic_physical_ro.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bol_physical_nl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bookline_physical_hu.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/barnes-and-noble_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/barnes-and-noble_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cdon_physical_se.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cede_physical_ch.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/citydisc_physical_ch.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ecoutez-et-t-l-chargez_digital_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/emi-digital-store_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/emijapan_physical_jp.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/emijapan_digital_jp.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/empik_physical_pl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/empik_digital_pl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/exlibris_physical_ch.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/feriamix_physical_cl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fnac_physical_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fnac_physical_it.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fnac_physical_es.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fnacmusic_digital_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/freerecordshop_physical_nl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/freerecordshop_physical_be.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fye_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ginza_physical_se.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/hmv_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/hmv_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/hmv_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/hmv_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/hmv_physical_ie.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/eed5f1b548ef43219cd4424c79408b6c.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/imusic_physical_dk.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/imusic_digital_dk.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/insound_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/insound_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_at.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_au.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_ca.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_dk.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_fi.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_ie.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_mx.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_nl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_no.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_se.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_it.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/itunes_digital_es.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/jb-hi-fi_physical_au.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/jb-hi-fi_digital_au.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/jpc_physical_de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/lanbdmarkonthenet_physical_in.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/levykauppaax_physical_fi.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/levykauppaax_digital_fi.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/livrariasaraiva_physical_br.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/look-and-listen_physical_za.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/mediamarkt_physical_nl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/merlin_physical_pl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/mixup_physical_mx.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/mixup_digital_mx.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/musicfi_physical_fi.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/musicload_digital_de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/musimundo_physical_ar.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/mutebank_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/muz_physical_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/muz_digital_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/netanttila_physical_fi.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/newburycomics_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/newburycomics_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/normanrecords_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ozon_physical_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ozon_digital_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/platekompaniet_physical_no.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/platomania_physical_nl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/platomania_digital_nl.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/play.com_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/play.com_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/play.com_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/play.com_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/recordstore_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/recordstore_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/recordstore_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/recordstore_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/rhapsody_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/roughtrade_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/roughtrade_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/sanity_physical_au.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/sanity_digital_au.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8bf879f2b543468ab580672bc28369b6.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6656255dfcb2422fae1dd50656def8a8.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7digital_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/sonora_digital_ar.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/soundmedia_physical_ch.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/soyuz_physical_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/soyuz_digital_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/stereostudio_physical_dk.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/thinkindie_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/towerrecords_physical_ie.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/virginmega_digital_fr.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/walmart_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/walmart_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/weltbild_physical_ch.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/weltbild_physical_de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/whatrecords_physical_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/zune_digital_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d08112174bea43baaaa9bdb29a8c6583.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6fc31c4c3da84dcba349eae1f1447d9d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/c123b43be32643b3b6b0239278cb8c0b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4c4f59d3e9124124ac2d3ff14fe05724.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d2afaf593ec04ae2b0394157adede4b1.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/aa51f475b9e84004a3fdd612277229a2.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/69ba669aede744fcb2326a9bee367c3e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/54e5db2fd8814617aa192a1657ea0a0f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9f4be0934c3c492080a423973792f519.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/283671f6541d4725a37411c101cb0b3e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cac8a67951954a6fbad9d80707455d5f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2679399ad7be4bd0b8bff0d10a425fcf.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/19571853883e4e36bb99889cf0c6b5ad.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8d89b1798dca4302bd1683b89cf55f63.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a5c3d13a2e244f28afb9a1c11e9dfd89.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/20d5674c69a849ac9df86dd0a39e54c5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bf0fdd9309594cad820b961f33b122bc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cb0cd417959143c4a42e418c32f22eb4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3cf6d46fd8314643aecfd943f32be075.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/1b6dfb72c3cd4fbbbb03ce6c93483e93.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/467201824bb04d1ea0a908746813dacb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7afb310334b340faa0b69fe30383008e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/258ba443aa8a42dea7f06924c6c48211.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/1a188014c7a142b4b97e0d952d4ef312.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/99e0cb7f6b26474ca0b54ac27e45517e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/44d8361fd2814ae0b1a277ef742f8d54.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9d040d3fa28d4949ab39320cda0141c4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4cee710ebf7443a999920537e659582a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7d803d44b94b4b0f9982736d7e413213.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/f2e19b82262945aa801565f762556564.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/640e9c88d1c241ef832951d868ef991d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3a58954a13c746058e60d9ba08e529dd.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ddbb67edaba943559458ec65c0de012d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/dd4275faa4ea4f59a568f70a0e4db934.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bade20ddff784c35aae1a8f15b2f4ba9.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/c5f9e1bda5cc438985012eefddd796b5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ed628915678a4982a8eee86138ce01a5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/97062e4207b640cdbf209cb2a6bd5574.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/0fc7c8d2d7424fb7a3bba3ffc6bb3816.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/401084c915824646949db0b856c200b0.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e3a585c45baf45b485ea3bc1432a1424.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4a5b25bb6f5c41fc967da092aa413e8f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/80482efdfd294129bb9e01f730e00fae.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e059888721cb451f8f7a6e0fb91a64de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8829730487bd48a78de47e5196573acf.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2f9789b3f544415a9e4225a1a1d4d51a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/df56c72b33894b76829acea8f62f1207.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8d8ec2707be74550a405ae4c3b5686b8.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/71a4320687a24958a7e6937cb9d24f06.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9bc15795cf174677b80cb5e08aee9f43.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9299986239d1400c960440aef36cd363.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b3ac058747444a1ebae43449ac88116c.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ee3a6a59a104492cb1b2915176fb3488.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e0c20a8fb82d42d7a3168c5c04747b0d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/04b93f22129e4ce8b6b90686ba0de9f9.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/10afede4a4434e83ac907ff7039c7010.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e0a689cfae744f838143923d853908ca.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/201c187e7cc24523b3b48c33c2c8566f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/448bf7817b684ed790f42a8c65f93502.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3cdf23d8d7044ee99fd0b8e84ca6e913.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/10442892e14544cab8de17c0aaf2de9f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/58b0a701a58d49d1931c37714714134b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4129fdee8fd74cb69c4b5c6ec36426b6.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8bfb1e5a04ab427d9276e3e0113b81fe.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/0da0fa6a813541a69a9e90ec00e2f9c9.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/accca67d5bec4952a54c14b83d8f816b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/0b08e62b99c347289594cd3c08bcc89a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2dfccda233a140f393b42f812521c9d3.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/1f5ccd558aac49a1a17ec575f47eb01a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6ab36b7b376b462f8f9c9c15959b0062.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/15edccd3e55c44e0a6614273dcf07875.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ca68308dc77f4a64b20485a97bd023e9.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/45f7984f1db64537a120bf46849a3314.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/53e758a932ee478aa196a7965b16012e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d9f211d32e394beeac44b0806f5c4c6e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3013668112d946028290deac6be4c94d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/0aa9aad4bab041158d2700305b8f0cac.gif
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d34c2f57bc7441329b3c1337dbcfcc4f.gif
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/aba360e3084e45d6aa5f52a0ad8dd6d5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/13f0193e85d3401e87df8fd8632194f1.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2c8c2e87b2ec49b6b0b74f0f648a3998.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/283311f6cb414e4e9cda02d83a0d8e60.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cd27c211796a495abfbc434ca072175a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/11837aba41ad47a4a0468d11968bf260.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b8afc25350be4143b27b37319a65c194.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6d3dd66c799f49a3ac36c9c769228af4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/212c10fc85ad435199077ecfe7db7d49.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e1a8d58c53884976adc3a027c086b03a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9f1ced97425c45459bafb80de2ae0abc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4223604e14134220946be6630ada6dd3.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/778f66c64abe4245a82dff7a3b76c7c8.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/058f4910359b41e8b5253e2e691df0a6.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/aa55785656c145749cf8960c6d9ecd14.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/372c6a08f5e34521a7b01ff3fb1b68e8.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/0bc8f266ef5742a68442c15788a8ab59.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9db1f04a9b4b474386b9f783f012b7c4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fb6cd8f155854a25b7a422e26a704af7.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2c6caf780e074f9a83aeddffbf3adeb0.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fd5e76400303474a8455760b5f4c8059.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4486e89e21e74e40a76fa8faf7ec83ca.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ff481691cae24cc1b2cd1944720812df.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/aa6cbbf3e23f4e218f71e9d856366fb7.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a18a4fc0fbfb4cdfa508ca53f980ba0f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/00612593aeec4e6ca4498c4cd2bcd4a0.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/db13f79bdcf94ec084a2baa7ad381ac2.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bb0d86ab648c4750bb77cdb9743b1c9e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/1274ff2411734d8786091197b811b7e7.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/34964ef7edac4382a6f3afbc3c8c7533.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/f9bd7cae4485430794a7b7d828dc3dd6.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7bfabe0e8dee4d3da79f1d03026cf5bc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7e0c93f27c4c4146a7d527d313d1e434.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/572efefc6ee74467af283815b719a57b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/61976c21073345349f97e8caff274e6b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/eb68bf59647044b994230d9fa8614f42.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d7a1c25916664206b20da567d2bcd90f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/edd56e3acc77482c9b0e286f8554aaec.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9b7226299bce4b52a0ea59f52527c6de.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4130a4242e8d4144a69ae4e85c2fbd61.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b8303f762e22458b93ee9fe6820d5bbe.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/de61959851ec426890b2b31614b00f87.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3c3ec0a6140b47fcadb35d75b0739b50.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a8c3ce9fdc6e45dba36a466afc2637d5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b7a32b56c44b4bf4bb7c28039971020f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d61abb30d3954a3baf3eda7106eabbf4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/66e34868211148dca6168108babd524b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2be9d743f4d24f1fa2d18f2a83ecdd6c.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/f4994f2340c9441889066c3b26f59c81.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/c6fe14f23d92479890e960ba5457a001.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8601eab352814ee282d82f4a7f3888ad.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d7c17699fef943d49ed2de60e2b9ab73.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/354ec5bde83f462c80b97138454044dc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/27e7998a51ba4421984cc5e786a339da.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/925a0793791b44a79a8654d235b54962.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/640006b83e9e4e2e8beb13ccd0517363.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e17949b20ff14fb0a9716c20ec013b00.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/66d9259f750a43ad9966fdc0f7c14b1f.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/457c249eec0142cdbabbcca0860a01ed.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/de0576112cf44bdfa513a22a0c7fedbc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/f77afb012b8744639fc43789365cf123.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7bd751e341514079a1d64dd7f38945b4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2da2cf17fc734b568fa7905973cf36bf.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7050adac75c741f8bdd16916807fbd14.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/df2d2eeff2494483940978083855d9dc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4c87f33a3af74bd792a673e4fc85d472.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ba698acdf748417088d171f729feb7fd.gif
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7956f1a594c9471799743647c35f7fea.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b4a9d3b3e9ef4520800a7d35e0d69370.gif
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b984fa9b5a8d45de85d622a11502024a.gif
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ee43a0125dda411ca9f272a068b073ae.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6797ba3f6fbe4edd8bd9a2c13b32a0dc.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/138d7248db6d4f428ab42bca1a20a451.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8e25db86f0b94d2ab8c95abe311c10aa.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/08b7b0a288954c4bb13ad5b3f56fecb4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d0485523028743e8b968db407deb1784.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/75d9aab4ee70406ab16ae7adebbc8100.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6671ac09876847bfa80e9945967299c9.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/86b254c3dfbf465d8f3a3b89550263a0.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ea9c356c589f4491b01781fe61784a02.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/c1c358044a9d40f5b06b21839df00268.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ec93f9a4b6c04738a2a8ff38fbf8075b.png
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ddbdce3eac024cf78c0475f39709fde0.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/07502ba2e0004839bd4265bbb9e5f157.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/5144071a2b3548519e64c2dc3613c91d.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b2a1cefc298b4321a1032d935f0484e6.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2d472ad021dd430a8412bf51f935e389.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3aa75813261a42d6a174fecc4a2e8039.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2a0ef3dac7a84582beaa42fef10dd40c.png
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/98c430e26b2c406ca5149a8bf817835d.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7e5c3f6bd0024e04876fc8e32eb10e30.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/232bc516bbe54d8e9368b2c7b71a98a1.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6fea4c0c6cee44fe9ee17aa412951cc4.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/622d5406ad81444485e9619e7f659560.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b1fea808be194364b66520599d8f5c09.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ae308a1fb2a44b3e8cdd277b93226a78.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ee9b5bc8a14a42848ad05a1f12be1bb9.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7a82d8e2014045eaac9084e9da716b31.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ec842b8970a045c99c1d2176d4c51eca.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b575cfc0bef04fc5a0629c8b3a085d41.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/1916d745f8b449eaa44dbcf77dbc3413.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a51f046c26dc469a807ee8e83e07a894.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e61d0e61a1a8458ea06c2f626f893e1b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cc44a823640b47dc84af2ee291e4b9fb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/5d37f8603e594af19c5966da775e070d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fea10ae7de464017b9d6820da6e22a78.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Failed - NoSuchKey: The specified key does not exist.
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/64bffd834c1f4b37acf5d9607c5b78c2.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e262dfa596354cbaa40cbb823f8fe32a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7digital_digital_gb.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/393c1f954a954b0282948762362d7375.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/df9bf3d1bf034fa78ee5b56ffe50c3ee.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/23f2b621066b481dbf8ca459da625f5e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/d1a5a34c081b4b1fa7aa0eccf1eeb9ad.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/08eb88d4f01547b3a3de4e7b7491395c.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bb051834ba4844cd9602d28feda55caa.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/f029f3c5d62740d097ecea0d82b7ff3a.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a5efcfc413744a5b8d55311e7d8b89ad.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/49a2212d8e99406eb1b44f38d3a3f927.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7b01410c158641b5829034c9a2058a86.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fc1829d4dfed4662a67f1ad2a6055ff2.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/5bfdd963aad845f2860e0888c2be3ed6.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cc0e539c9ade4e33afa7add3dfb5405e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/4b357e88671747aaad1d37d3a88f6892.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/5c1e3d878e3b475fbcd8a1d7bcac523d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a4500f648a424e099babca1a43f6d1c5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/febf3a3b03bd4dee8efe0f237369b550.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/431cb6c1dfef4669b6f42cddb15ee0b5.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/ddc5ba4f9ea4455384691bbde42c0356.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/48a4361216b5495684658a77b72a5edd.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/7365173ed25a4720bec9832a87bdfecd.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/55f9aab1ed2049bfbd4bc79a619f4061.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2b09f7a77a6844329e48936e9dc26c46.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/71a641ee0ad947a79500383d71c430f2.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e8c601283be141f19e239019519d55e1.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/51796fca8f0c44fda2625b2c09e864a9.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/028703d7050148f0833fe04c12b1b2e1.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/8e53b40567b347c8a85a351a0994dae8.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2660b6b271cc45edb0451fd5400b602b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/f099d11553324accb32b2480107cca4c.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9a95d5979a974815a717e71836caaeef.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/e116ef3a73254ec5adec28dbdae80870.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b0e9b73a64484911a0a08e014af0faf3.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/c31293da1dfb4d9dac64d36c16743e1e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/55157bd204a64c26b1b05cb95cc8f95b.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/c952162766d34da5916f2b5b5bd96aa1.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/79b0600fc173406fa821547f9f673067.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3718100067db4321bbcc294bbc6ba31d.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/185b935e50274a9c88ce20536e4a2946.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/0b252ef8614645e690bc4cebf8edc467.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/1d47f0bf45cb485893ebc1f275a57cba.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/59841a9557d84bc698eb94bc8710cd72.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/fe0478e0b7644d48950a4f7b0d57570f.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/df2fc0c720d74b9dbd3ba1f75da43b98.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/22dcd75cfa014ab58ae3618a91df1354.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/b22b011f9bd44b329d084e2f47a5d169.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2e88e44fdc5a4809be24eeb47ba2ce9d.png
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/9c436a8344c14849b1f5d49e57454357.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/efc76a3edf1b4b04b64f3b185fc8bbc4.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/04a5b5ac3ec741b08436a5e991969215.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a2eb13a13d89452c9644a1b6aca83ca9.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/970fa006be634a1bbae165e46ad74535.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/3672cee691ae45df87779dd94f31c877.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/901d7a85cfdb4549aeb1b07ebd74aec0.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/amazon_physical_us.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/hungama_digital_in.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a874e83a37ea475f898d1e595790f65e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bolero_physical_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/bolero_digital_ru.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/2c271b52d20148ffbe4189dad6318fe0.gif
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/36d6747a4f4a4ceebf13c3765dec1e34.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/cee029151c48436eaf7017e2d13dbd6c.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/55decc1781df49df9ad08b66a5b09d3e.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/6397a90998c54176ab70e532928b3eb8.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] fetching widget/1.0/images/vendors/a6e5470ff4fa4bac876e95d71d66df40.jpg
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Done!
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+  * executing "chown -R nobody:nogroup /emi/kessling/shared/uploads"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "rm -f /emi/kessling/current && ln -s /emi/kessling/releases/20130409214825 /emi/kessling/current"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+    triggering after callbacks for `deploy:symlink'
+  * == Currently executing `deploy:db:create'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t dm:create\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke dm:create (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute dm:create
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Database dmmtool_sandbox already exists.
+    command finished
+  * == Currently executing `deploy:db:backup'
+  * executing "mkdir -p /emi/kessling/shared/db_backups"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t db:export:all[sandbox,/emi/kessling/shared/db_backups,2013_04_09_17_50_09]\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke db:export:all (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute db:export:all
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mysqldump --no_data --single-transaction -u'root' -p'password' -h'sandbox.db.dev.emiplatform.com' 'dmmtool_sandbox' --tables 'amazon_prices' 'buy_button_editions' 'buy_button_offerings' 'buy_buttons' 'delayed_jobs' 'example_amazon_prices' 'example_itunes_prices' 'favourites' 'itunes_prices' 'landing_page_buy_button_histories' 'landing_page_buy_buttons' 'landing_page_histories' 'landing_pages' 'migration_info' 'retailer_types' 'template_widgets' 'templates' 'tmp_bbterritories' 'tmp_buybuttons' 'tmp_landingpages' 'tmp_lpterritories' 'vendors' | gzip -c > '/emi/kessling/shared/db_backups/dmmtool_sandbox-2013_04_09_17_50_09.sql.gz'
+*** [err :: aa39.dev.emiplatform.com] mysqldump --no-create-info --single-transaction -u'root' -p'password' -h'sandbox.db.dev.emiplatform.com' 'dmmtool_sandbox' --tables 'amazon_prices' 'buy_button_editions' 'buy_button_offerings' 'buy_buttons' 'delayed_jobs' 'example_amazon_prices' 'example_itunes_prices' 'favourites' 'itunes_prices' 'landing_page_buy_button_histories' 'landing_page_buy_buttons' 'landing_page_histories' 'landing_pages' 'migration_info' 'retailer_types' 'template_widgets' 'templates' 'tmp_bbterritories' 'tmp_buybuttons' 'tmp_landingpages' 'tmp_lpterritories' 'vendors'   | gzip -c >> '/emi/kessling/shared/db_backups/dmmtool_sandbox-2013_04_09_17_50_09.sql.gz'
+    command finished
+  * == Currently executing `deploy:migrate'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t dm:migrate:up\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke dm:migrate:up (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke dm:migrate:load (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute dm:migrate:load
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading migrations for default_migrations.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Skipping migrations for citizen_migrations.rb (adapter not configured)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute dm:migrate:up
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+    triggering after callbacks for `deploy:migrate'
+  * == Currently executing `db:seed'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t dm:seed\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke dm:seed (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute dm:seed
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] == Seeding from vendors.rb =================================
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ============================================================
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+  * == Currently executing `emi:app:passengerize'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t passenger:config[dmmtool,sandbox]\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke passenger:config (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke environment (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute environment
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute passenger:config
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /emi/passenger
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /emi/passenger/conf
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /emi/passenger/docroot
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /emi/passenger/approot
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] chown -R nobody:nogroup /mnt/emi/kessling/releases/20130409214825/config.ru
+*** [err :: aa39.dev.emiplatform.com] chown -R nobody:nogroup /mnt/emi/kessling/releases/20130409214825/public
+*** [err :: aa39.dev.emiplatform.com] chmod 755 /mnt/emi/kessling/releases/20130409214825/tmp
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] chown -R nobody:nogroup /mnt/emi/kessling/releases/20130409214825/tmp
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /mnt/emi/kessling/releases/20130409214825/log/archive
+*** [err :: aa39.dev.emiplatform.com] chmod 755 /mnt/emi/kessling/releases/20130409214825/log
+*** [err :: aa39.dev.emiplatform.com] chmod 644 /mnt/emi/kessling/releases/20130409214825/log/development.log /mnt/emi/kessling/releases/20130409214825/log/SANDBOX.log /mnt/emi/kessling/releases/20130409214825/log/sandbox.log /mnt/emi/kessling/releases/20130409214825/log/newrelic_agent.log /mnt/emi/kessling/releases/20130409214825/log/archive
+*** [err :: aa39.dev.emiplatform.com] chmod 755 /mnt/emi/kessling/releases/20130409214825/log/archive
+*** [err :: aa39.dev.emiplatform.com] chown -R nobody:nogroup /mnt/emi/kessling/shared/log
+ ** [out :: aa39.dev.emiplatform.com] File.open '/etc/logrotate.d/dmmtool' {
+ ** [out :: aa39.dev.emiplatform.com] /mnt/emi/kessling/shared/log/*.log {
+ ** [out :: aa39.dev.emiplatform.com] missingok
+ ** [out :: aa39.dev.emiplatform.com] daily
+ ** [out :: aa39.dev.emiplatform.com] rotate 30
+ ** [out :: aa39.dev.emiplatform.com] dateext
+ ** [out :: aa39.dev.emiplatform.com] compress
+ ** [out :: aa39.dev.emiplatform.com] notifempty
+ ** [out :: aa39.dev.emiplatform.com] sharedscripts
+ ** [out :: aa39.dev.emiplatform.com] olddir /mnt/emi/kessling/shared/log/archive
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] create
+ ** [out :: aa39.dev.emiplatform.com] postrotate
+ ** [out :: aa39.dev.emiplatform.com] touch /mnt/emi/kessling/releases/20130409214825/tmp/restart.txt
+ ** [out :: aa39.dev.emiplatform.com] endscript
+ ** [out :: aa39.dev.emiplatform.com] }
+ ** [out :: aa39.dev.emiplatform.com] }
+*** [err :: aa39.dev.emiplatform.com] chown -R nobody:nogroup /mnt/emi/kessling/shared/pids
+*** [err :: aa39.dev.emiplatform.com] rm -f /emi/passenger/approot/dmmtool-sandbox
+*** [err :: aa39.dev.emiplatform.com] ln -sf /mnt/emi/kessling/current /emi/passenger/approot/dmmtool-sandbox
+*** [err :: aa39.dev.emiplatform.com] mkdir -p /emi/passenger/docroot/sandbox
+*** [err :: aa39.dev.emiplatform.com] rm -f /emi/passenger/docroot/sandbox/dmmtool
+*** [err :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] ln -sf /emi/passenger/approot/dmmtool-sandbox/public /emi/passenger/docroot/sandbox/dmmtool
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] File.open '/emi/passenger/conf/dmmtool-sandbox.port4080' {
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] PassengerDefaultUser nobody
+ ** [out :: aa39.dev.emiplatform.com] RackEnv sandbox
+ ** [out :: aa39.dev.emiplatform.com] RailsEnv sandbox
+ ** [out :: aa39.dev.emiplatform.com] RackBaseURI /dmmtool
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <IfModule mod_rewrite.c>
+ ** [out :: aa39.dev.emiplatform.com] RewriteEngine on
+ ** [out :: aa39.dev.emiplatform.com] RewriteCond %{DOCUMENT_ROOT}/dmmtool/system/maintenance.html -f
+ ** [out :: aa39.dev.emiplatform.com] RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+ ** [out :: aa39.dev.emiplatform.com] RewriteCond %{SCRIPT_FILENAME} !^(.+).(gif|png|jpg|css|js|swf)$
+ ** [out :: aa39.dev.emiplatform.com] RewriteRule ^.*$ /dmmtool/system/maintenance.html [L]
+ ** [out :: aa39.dev.emiplatform.com] </IfModule>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <IfModule mod_expires.c>
+ ** [out :: aa39.dev.emiplatform.com] ExpiresActive On
+ ** [out :: aa39.dev.emiplatform.com] ExpiresDefault now
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <FilesMatch "\.(ico|swf)$">
+ ** [out :: aa39.dev.emiplatform.com] ExpiresDefault "access plus 1 month"
+ ** [out :: aa39.dev.emiplatform.com] </FilesMatch>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <FilesMatch "\.(gif|jpe?g|png)$">
+ ** [out :: aa39.dev.emiplatform.com] ExpiresDefault "access plus 1 week"
+ ** [out :: aa39.dev.emiplatform.com] </FilesMatch>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <FilesMatch "\.(css|js)$">
+ ** [out :: aa39.dev.emiplatform.com] ExpiresDefault "access plus 1 day"
+ ** [out :: aa39.dev.emiplatform.com] </FilesMatch>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] </IfModule>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <Directory "/emi/passenger/docroot/sandbox/dmmtool">
+ ** [out :: aa39.dev.emiplatform.com] Options FollowSymLinks -MultiViews
+ ** [out :: aa39.dev.emiplatform.com] AllowOverride None
+ ** [out :: aa39.dev.emiplatform.com] Order allow,deny
+ ** [out :: aa39.dev.emiplatform.com] Allow from all
+ ** [out :: aa39.dev.emiplatform.com] </Directory>
+ ** [out :: aa39.dev.emiplatform.com] }
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] File.open '/emi/passenger/conf/virtualhost.port4080.conf' {
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] # REMEMBER: This file is used by deployment (e.g., PRODUCTION) servers.  That option
+ ** [out :: aa39.dev.emiplatform.com] # you want to enable for CI?  Be careful.
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <VirtualHost *:4080>
+ ** [out :: aa39.dev.emiplatform.com] ServerName aa39.dev.emiplatform.com
+ ** [out :: aa39.dev.emiplatform.com] DocumentRoot /emi/passenger/docroot/sandbox
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] PassengerUseGlobalQueue on
+ ** [out :: aa39.dev.emiplatform.com] PassengerHighPerformance on
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <IfModule mod_security2.c>
+ ** [out :: aa39.dev.emiplatform.com] # Trust nginx's X-Real-IP, else get actual sender (likely an internal REST client)
+ ** [out :: aa39.dev.emiplatform.com] SecRule REQUEST_HEADERS:X-Real-IP "^(.+)$" "phase:1,pass,capture,nolog,initcol:IP=%{tx.1},skip:1"
+ ** [out :: aa39.dev.emiplatform.com] SecAction "phase:1,pass,nolog,initcol:IP=%{REMOTE_ADDR}"
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] # Verify that the last X-Forwarded-For entry matches IP.KEY
+ ** [out :: aa39.dev.emiplatform.com] SecRule REQUEST_HEADERS:X-Forwarded-For "^(.*,)?\s*([0-9.]+)$" "phase:1,pass,capture,nolog,setvar:TX.XFF_REMOTE_ADDR=%{tx.2},setvar:TX.XFF=%{tx.0}"
+ ** [out :: aa39.dev.emiplatform.com] SecRule TX:XFF_REMOTE_ADDR "!@streq %{IP.KEY}" "phase:1,pass,log,logdata:'suspicious access from %{IP.KEY}, XFF reported addr: %{tx.XFF_REMOTE_ADDR}, xff: %{tx.XFF}'"
+ ** [out :: aa39.dev.emiplatform.com] </IfModule>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Include /emi/passenger/conf/*.port4080
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] <IfModule mod_deflate.c>
+ ** [out :: aa39.dev.emiplatform.com] # from http://www.overset.com/2007/04/03/modproxy-and-internet-explorer-problems/
+ ** [out :: aa39.dev.emiplatform.com] SetOutputFilter DEFLATE
+ ** [out :: aa39.dev.emiplatform.com] SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png|swf)$ no-gzip dont-vary
+ ** [out :: aa39.dev.emiplatform.com] SetEnvIfNoCase Request_URI \.(?:exe|t?gz|zip|bz2|sit|rar)$ no-gzip dont-vary
+ ** [out :: aa39.dev.emiplatform.com] # Required for IE6:
+ ** [out :: aa39.dev.emiplatform.com] # SetEnvIfNoCase Request_URI \.(?:js)$ javascript_file=1
+ ** [out :: aa39.dev.emiplatform.com] </IfModule>
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] LogFormat "%h %l %u %t %>s %D \"%r\" %b \"%{Referer}i\" \"%{User-Agent}i\"" emi_combined
+ ** [out :: aa39.dev.emiplatform.com] CustomLog /var/log/apache2/access.log emi_combined
+ ** [out :: aa39.dev.emiplatform.com] </VirtualHost>
+ ** [out :: aa39.dev.emiplatform.com] }
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+  * == Currently executing `emi:app:crontabs'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t crontabs:install[kessling,sandbox,/emi/kessling/current/config/crontabs] APP_SERVERS=aa39.dev.emiplatform.com DB_SERVERS=aa39.dev.emiplatform.com WEB_SERVERS=router.dev.emiplatform.com\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke crontabs:install (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute crontabs:install
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+  * == Currently executing `apache:configtest'
+  * executing "apache2ctl configtest"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] Syntax OK
+    command finished
+  * == Currently executing `apache:restart'
+  * executing "sudo -p 'sudo password: ' apache2ctl restart"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+    triggering after callbacks for `apache:restart'
+  * == Currently executing `deploy:web:enable'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t maintenance:remove[sandbox,dmmtool] WEB_HOSTS=router.dev.emiplatform.com\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke maintenance:remove (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke environment (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute environment
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute maintenance:remove
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Removing maintenance page on web host [router.dev.emiplatform.com]
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+  * == Currently executing `widget:deploy'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t widget:deploy\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke widget:deploy (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute widget:deploy
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] warning: peer certificate won't be verified in this SSL session
+*** [err :: aa39.dev.emiplatform.com] 
+    command finished
+  * == Currently executing `landing_pages:deploy'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t landing_pages:deploy\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke landing_pages:deploy (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute landing_pages:deploy
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+ ** transaction: commit
+  * == Currently executing `deploy:restart'
+    triggering before callbacks for `deploy:restart'
+  * == Currently executing `deploy:dj:stop'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t delayed_job:workers:stop\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke delayed_job:workers:stop (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute delayed_job:workers:stop
+ ** [out :: aa39.dev.emiplatform.com] 
+    command finished
+  * executing "touch /emi/kessling/current/tmp/restart.txt"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+    triggering after callbacks for `deploy:restart'
+  * == Currently executing `deploy:ensure_logfile'
+  * executing "touch /emi/kessling/shared/log/sandbox.log"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * == Currently executing `deploy:dj:start'
+  * executing "cd /emi/kessling/releases/20130409214825 &&       sudo -p 'sudo password: ' -u root sh -c \"RAILS_ENV=sandbox MERB_ENV=sandbox $(if [ -f \"/emi/kessling/releases/20130409214825/Gemfile\" ] ; then echo 'bundle exec'; fi) rake -t delayed_job:workers:start\""
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+*** [err :: aa39.dev.emiplatform.com] /usr/lib/ruby/gems/1.8/gems/bundler-1.0.11/lib/bundler/runtime.rb:136: warning: Insecure world writable dir /emi in PATH, mode 040777
+ ** [out :: aa39.dev.emiplatform.com] (in /mnt/emi/kessling/releases/20130409214825)
+ ** [out :: aa39.dev.emiplatform.com] Loading init file from /mnt/emi/kessling/releases/20130409214825/config/init.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+*** [err :: aa39.dev.emiplatform.com] /emi/kessling/shared/bundle/ruby/1.8/gems/templater-1.0.0/lib/templater/discovery.rb:62:Warning: Gem::cache is deprecated and will be removed on or after August 2011.  Use Gem::source_index.
+*** [err :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke delayed_job:workers:start (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Invoke merb_env (first_time)
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute merb_env
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Loading /mnt/emi/kessling/releases/20130409214825/config/environments/sandbox.rb
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] Logging to file at /mnt/emi/kessling/releases/20130409214825/log/sandbox.log
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] ** Execute delayed_job:workers:start
+ ** [out :: aa39.dev.emiplatform.com] 
+ ** [out :: aa39.dev.emiplatform.com] delayed_job: process with pid 20404 started.
+    command finished
+    triggering after callbacks for `deploy'
+  * == Currently executing `auto_tagger:create_ref'
+cd /Users/pair/work/kessling && git update-ref refs/tags/sandbox/20130409215359 199a104d3e528df343a40b8e7557074798aa75b5
+ ** AUTO TAGGER: created tag refs/tags/sandbox/20130409215359 from 199a104d3e528df343a40b8e7557074798aa75b5
+  * == Currently executing `auto_tagger:write_ref_to_shared'
+ ** AUTO TAGGER: writing tag to shared text file on remote server
+  * executing "echo '199a104d3e528df343a40b8e7557074798aa75b5' > /emi/kessling/shared/released_git_tag.txt"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * == Currently executing `deploy:push_tags'
+    executing locally: "git push --tags"
+Total 0 (delta 0), reused 0 (delta 0)
+To git@github.com:emi/kessling.git
+ * [new tag]         sandbox/20130409215359 -> sandbox/20130409215359
+ ** 
+ ** Pushed tags for autotagger
+  * == Currently executing `auto_tagger:print_latest_refs'
+ ** AUTO TAGGER: release tag history is:
+cd /Users/pair/work/kessling && git show-ref
+cd /Users/pair/work/kessling && git show-ref
+cd /Users/pair/work/kessling && git show-ref
+cd /Users/pair/work/kessling && git show-ref
+cd /Users/pair/work/kessling && git show-ref
+ ** 199a104d3e528df343a40b8e7557074798aa75b5 refs/tags/ci/20130409214322
+ ** 199a104d3e528df343a40b8e7557074798aa75b5 refs/tags/integration/20130409214611
+ ** 199a104d3e528df343a40b8e7557074798aa75b5 refs/tags/sandbox/20130409215359
+ ** df60ecb3ca3da51d9c6f1b6f35e8e4bfe81d6847 refs/tags/uat/20130329111158
+ ** df60ecb3ca3da51d9c6f1b6f35e8e4bfe81d6847 refs/tags/production/20130329163811
+  * == Currently executing `newrelic:notice_deployment'
+  * Getting log of changes for New Relic Deployment details
+  * executing "cat /emi/kessling/current/REVISION"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * executing "cat /emi/kessling/releases/20130409154537/REVISION"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
+  * Uploading deployment to New Relic
+Recorded deployment to 'Kessling (Sandbox)' (Tue Apr 09 17:54:07 -0400 2013)
+ ** Uploaded deployment information to New Relic
+  * == Currently executing `deploy:cleanup'
+ ** keeping 10 of 11 deployed releases
+  * executing "rm -rf /emi/kessling/releases/20130322071334"
+    servers: ["aa39.dev.emiplatform.com"]
+    [aa39.dev.emiplatform.com] executing command
+    command finished
